@@ -1507,12 +1507,17 @@ public final class ProgramBlocksView extends ProgramBaseView {
                     h1("The screen name and description will help a user understand which part of"
                             + " an application they are on.")
                         .withClasses("text-base", "mb-2"),
-                    FieldWithLabel.input()
-                        .setId("block-name-input")
-                        .setFieldName("name")
-                        .setLabelText("Screen name")
-                        .setValue(blockDefinition.name())
-                        .getInputTag(),
+                    iff(blockForm.isRepeated(), 
+                      div("To give the applicant context, we will display the applicant-defined label(s) for the listed entity they are answering questions for on this screen. You can optionally add more text to the screen name to provide further context. For example, “Jennifer - Background Information”.")
+                    ),
+                    div(
+                        div(blockForm.getNamePrefix()),
+                        FieldWithLabel.input()
+                            .setId("block-name-input")
+                            .setFieldName("name")
+                            .setLabelText("Screen name")
+                            .setValue(blockDefinition.name())
+                            .getInputTag()),
                     FieldWithLabel.textArea()
                         .setId("block-description-textarea")
                         .setFieldName("description")
