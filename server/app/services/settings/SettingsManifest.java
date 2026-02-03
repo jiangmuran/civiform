@@ -1092,6 +1092,11 @@ public final class SettingsManifest extends AbstractSettingsManifest {
     return getBool("EXTERNAL_PROGRAM_CARDS_ENABLED");
   }
 
+  /** Enable showing a data security banner to applicants. */
+  public boolean getDataSecurityBannerEnabled(RequestHeader request) {
+    return getBool("DATA_SECURITY_BANNER_ENABLED", request);
+  }
+
   /** (NOT FOR PRODUCTION USE) Enable session timeout based on inactivity and maximum duration. */
   public boolean getSessionTimeoutEnabled(RequestHeader request) {
     return getBool("SESSION_TIMEOUT_ENABLED", request);
@@ -2360,7 +2365,13 @@ public final class SettingsManifest extends AbstractSettingsManifest {
                           "Enable showing external program cards.",
                           /* isRequired= */ false,
                           SettingType.BOOLEAN,
-                          SettingMode.ADMIN_READABLE))))
+                          SettingMode.ADMIN_READABLE),
+                      SettingDescription.create(
+                          "DATA_SECURITY_BANNER_ENABLED",
+                          "Enable showing a data security banner to applicants.",
+                          /* isRequired= */ false,
+                          SettingType.BOOLEAN,
+                          SettingMode.ADMIN_WRITEABLE))))
           .put(
               "Experimental",
               SettingsSection.create(

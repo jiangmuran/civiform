@@ -952,6 +952,12 @@
         "description": "Enable showing external program cards.",
         "type": "bool",
         "required": false
+      },
+      "DATA_SECURITY_BANNER_ENABLED": {
+        "mode": "ADMIN_WRITEABLE",
+        "description": "Enable showing a data security banner to applicants.",
+        "type": "bool",
+        "required": false
       }
     }
   },
